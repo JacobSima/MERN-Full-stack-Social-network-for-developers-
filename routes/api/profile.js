@@ -15,9 +15,7 @@ const validateEducationInput = require('../../validation/education')
 //@desc     get current users profile
 //@access   Private
 router.get('/',[passport.authenticate('jwt',{session:false})],async(req,res)=>{
-  const {errors,isValid}= validateProfileInput(req.body)
-  if(!isValid){return res.status(400).json(errors) }
-
+  let errors={}
   const profile = await Profile.findOne({user:req.user.id}).populate('user',['name','avatar'])
   if(!profile){errors.nonprofile='There is not profile for this user';return res.status(404).json(errors)}
   res.json(profile)

@@ -13,7 +13,7 @@ const validateRegisterInput = require('../../validation/register')
 const validateLoginInput  = require('../../validation/login')
 
 
-//@route   GET api/users/register
+//@route   POST api/users/register
 //@desc    Register user
 //@access   Public
 router.post('/register',async(req,res)=>{
